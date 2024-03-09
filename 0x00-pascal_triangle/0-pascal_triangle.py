@@ -1,21 +1,15 @@
 #!/usr/bin/python3
-"""Pascal's Triangle"""
-
-
 def pascal_triangle(n):
+    myValues = []
     if n <= 0:
-        return []
-
-    triangle = [[1]]
+        return myValues
+    myValues = [[1]]
 
     for i in range(1, n):
-        prev_row = triangle[-1]
-        new_row = [1]
-
-        for j in range(1, i):
-            new_row.append(prev_row[j - 1] + prev_row[j])
-
-        new_row.append(1)
-        triangle.append(new_row)
-
-    return triangle
+        new = [1]
+        for j in range(len(myValues[i - 1]) - 1):
+            current = myValues[i - 1]
+            new.append(myValues[i - 1][j] + myValues[i - 1][j + 1])
+        new.append(1)
+        myValues.append(new)
+    return myValues
