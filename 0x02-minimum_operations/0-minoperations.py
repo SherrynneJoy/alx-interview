@@ -8,10 +8,10 @@ def minOperations(n):
     exactly n H characters in the file."""
     if n <= 0:
         return 0
-    myArr = [0] * (n + 1)
+    dp = [0] * (n + 1)
     for i in range(2, n + 1):
-        myArr[i] = i
+        dp[i] = i
         for j in range(2, i):
             if i % j == 0:
-                myArr[i] = min(myArr[i], myArr[j] + i // j)
-    return myArr[n]
+                dp[i] = min(dp[i], dp[j] + i // j)
+    return dp[n]
